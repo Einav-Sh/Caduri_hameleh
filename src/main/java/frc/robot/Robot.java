@@ -20,10 +20,6 @@ import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
 import edu.wpi.first.wpilibj.motorcontrol.Talon;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
-/**
- * This is a demo program showing the use of the DifferentialDrive class, specifically it contains
- * the code necessary to operate a robot with tank drive.
- */
 public class Robot extends TimedRobot {
   private final XboxController controller = new XboxController(0);
 
@@ -43,7 +39,7 @@ public class Robot extends TimedRobot {
       leftMotorController.set(ControlMode.PercentOutput, rightX);
     }
 
-    if (rightX < 0) {
+    else if (rightX < 0) {
       rightMotorController.set(ControlMode.PercentOutput, rightX); 
       leftMotorController.set(ControlMode.PercentOutput, -rightX);
     }
