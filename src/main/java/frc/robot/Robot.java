@@ -39,7 +39,7 @@ public class Robot extends TimedRobot {
       leftMotorController.set(ControlMode.PercentOutput, rightX);
     }
 
-    else if (rightX < 0) {
+    else {
       rightMotorController.set(ControlMode.PercentOutput, rightX); 
       leftMotorController.set(ControlMode.PercentOutput, -rightX);
     }
