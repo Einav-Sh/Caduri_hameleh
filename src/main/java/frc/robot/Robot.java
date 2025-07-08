@@ -25,27 +25,27 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
  * the code necessary to operate a robot with tank drive.
  */
 public class Robot extends TimedRobot {
-  final private XboxController controller = new XboxController(0);
+  private final XboxController controller = new XboxController(0);
 
-  final private TalonSRX leftTalon = new TalonSRX(0);
-  final private TalonSRX rightTalon = new TalonSRX(1);
+  private final TalonSRX leftMotorController = new TalonSRX(0);
+  private final TalonSRX rightMotorController = new TalonSRX(1);
 
   @Override
   public void teleopPeriodic() {
-    double leftY = controller.getLeftY();
-    double rightX = controller.getRightX();
+    final double leftY = controller.getLeftY();
+    final double rightX = controller.getRightX();
 
-    leftTalon.set(ControlMode.PercentOutput, leftY); 
-    rightTalon.set(ControlMode.PercentOutput, leftY);
+    leftMotorController.set(ControlMode.PercentOutput, leftY); 
+    rightMotorController.set(ControlMode.PercentOutput, leftY);
 
     if (rightX > 0) {
-      rightTalon.set(ControlMode.PercentOutput, -rightX); 
-      leftTalon.set(ControlMode.PercentOutput, rightX);
+      rightMotorController.set(ControlMode.PercentOutput, -rightX); 
+      leftMotorController.set(ControlMode.PercentOutput, rightX);
     }
 
-    if (rightX < 0)
-     {rightTalon.set(ControlMode.PercentOutput, rightX); 
-      leftTalon.set(ControlMode.PercentOutput, -rightX);
+    if (rightX < 0) {
+      rightMotorController.set(ControlMode.PercentOutput, rightX); 
+      leftMotorController.set(ControlMode.PercentOutput, -rightX);
     }
   }
 }
